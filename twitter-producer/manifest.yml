@@ -1,0 +1,15 @@
+applications:
+- name: twitter-producer
+  buildpack: https://github.com/bbertka/python-buildpack.git
+  memory: 128M
+  disk: 256M
+  stack: cflinuxfs2
+  instances: 1
+  services: [rabbitmq]
+  env:
+    TASK_QUEUE: twitter_queue
+    APP_KEY: 
+    APP_SECRET: 
+    OAUTH_TOKEN:
+    OAUTH_TOKEN_SECRET: 
+    TRACK: bigdata

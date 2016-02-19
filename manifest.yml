@@ -1,0 +1,28 @@
+applications:
+
+- name: tweet-streamer
+  domain: pezapp.io
+  path: ./twitter-producer
+  memory: 128M
+  disk: 256M
+  stack: cflinuxfs2
+  instances: 1
+  services: [rabbitmq-streamer]
+  env:
+    TASK_QUEUE: tweet_queue
+    APP_KEY: v0mTODiMnIbZ3pDLg0k15WIdJ
+    APP_SECRET: jQylit94PLojE74hZFy41CyGI3qwekdLoUkoPml6tU2qRcdcmL
+    OAUTH_TOKEN: 2927712042-2lqhmE313agulgKmopCK7LwVlKI4orvg1RvW4QK
+    OAUTH_TOKEN_SECRET: 5QTMtw8qiT4qTyVGKgccAT0MAbhR3iahyiNhhEzLsN7Qv
+    TRACK: springboot
+
+- name: tweet-processor
+  domain: pezapp.io
+  path: ./twitter-consumer
+  memory: 128M
+  disk: 256M
+  stack: cflinuxfs2
+  instances: 1
+  services: [rabbitmq-streamer]
+  env:
+    TASK_QUEUE: tweet_queue
