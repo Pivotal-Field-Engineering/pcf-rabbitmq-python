@@ -3,7 +3,7 @@ import json, os, random, time
 import cfworker
 import pika
 
-worker = cfworker.cfworker( port=int(os.getenv('VCAP_APP_PORT')) )
+worker = cfworker.cfworker( port=int(os.getenv('PORT')) )
 worker.start()
 
 amqp_uri = json.loads(os.environ['VCAP_SERVICES'])['p-rabbitmq'][0]['credentials']['uri']
