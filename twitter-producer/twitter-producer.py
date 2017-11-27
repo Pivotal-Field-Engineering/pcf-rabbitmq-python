@@ -13,11 +13,11 @@ class TwitterProducer(TwythonStreamer):
 
     def on_success(self, data):
 	message = data['text'].encode('utf-8')
+	print "[twitter-producer] Sending %s" % message
         channel.basic_publish(exchange='',routing_key=os.getenv('TASK_QUEUE'), body=message, 
 		properties=pika.BasicProperties(
 			delivery_mode = 2 #make message persist
 		))
-        print "[twitter-producer] Sent %s" % message
 
     def on_error(self, status_code, data):
         print status_code
