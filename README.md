@@ -21,4 +21,4 @@ The consumer by default is scaled to 4 instances so note the '[APP/x]' to see wh
 
 Ref: https://www.rabbitmq.com/tutorials/tutorial-two-python.html
 
-Now on to the PKS Version of this tutorial!
+Now on to [the PKS Version](#) of this tutorial!
