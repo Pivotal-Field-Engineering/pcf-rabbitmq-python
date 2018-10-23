@@ -4,7 +4,10 @@ import cfworker
 from twython import TwythonStreamer
 import pika
 
-amqp_uri = json.loads(os.environ['VCAP_SERVICES'])['p-rabbitmq'][0]['credentials']['uri']
+#amqp_uri = json.loads(os.environ['VCAP_SERVICES'])['p-rabbitmq'][0]['credentials']['uri']
+
+amqp_uri = os.getenv('RABBITMQ_URI')
+
 connection = pika.BlockingConnection( pika.URLParameters(amqp_uri) )
 channel = connection.channel()
 channel.queue_declare(queue=os.getenv('TASK_QUEUE'), durable=True)
