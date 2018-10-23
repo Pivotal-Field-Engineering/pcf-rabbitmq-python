@@ -25,7 +25,7 @@ ENV OAUTH_TOKEN_SECRET JFEaeFGGDeSHg3VQcccdI8Pfj7ghvnj67dh
 
 #RabbitMQ Task Queue
 ENV TASK_QUEUE rabbitmq
-RABBITMQ_URI rabbitmq.default.svc.cluster.local
+ENV RABBITMQ_URI rabbitmq.default.svc.cluster.local
 
 # What to look for
 ENV TRACK bigdata
