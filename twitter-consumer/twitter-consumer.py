@@ -6,7 +6,10 @@ import pika
 worker = cfworker.cfworker( port=int(os.getenv('PORT')) )
 worker.start()
 
-amqp_uri = json.loads(os.environ['VCAP_SERVICES'])['p-rabbitmq'][0]['credentials']['uri']
+#amqp_uri = json.loads(os.environ['VCAP_SERVICES'])['p-rabbitmq'][0]['credentials']['uri']
+
+amqp_uri = os.getenv('RABBITMQ_URI')
+
 connection = pika.BlockingConnection( pika.URLParameters(amqp_uri) )
 
 channel = connection.channel()
