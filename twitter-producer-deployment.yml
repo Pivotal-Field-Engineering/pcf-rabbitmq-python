@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: twitter-producer-deployment
+spec:
+  selector:
+    matchLabels:
+      app: twitter-producer
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: twitter-producer
+    spec:
+      containers:
+      - name: twitter-producer
+        image: "registry.hub.docker.com/bbertka/twitter-producer"
+        ports:
+        - containerPort: 8080
+        env:
+        - name: APP_KEY
+          value: "LwIzxOAthQs3g"
+        - name: APP_SECRET
+          value: "bcbSbBPdKvCwxU93JmOnIprtoeAimVLUXmyiM"
+        - name: OAUTH_TOKEN
+          value: "aUYEuK2wJlzYCIvUO89TI1EpLmQcTXKcE"
+        - name: OAUTH_TOKEN_SECRET
+          value: "hzamhoVCrsoOmWgEGyiLmJYFpepc41S"
+        - name: TASK_QUEUE
+          value: "rabbitmq"
+        - name: RABBITMQ_URI
+          value: "amqp://cg2jasdcp:GxGsddinJsmQ7R88DFZ_cSW7GBtvR94oj@toad.rmq.cloudamqp.com/chxgkl7p"
+        - name: TRACK
+          value: "bigdata"
+        - name: PORT
+          value: "8080"
