@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: twitter-consumer-deployment
+spec:
+  selector:
+    matchLabels:
+      app: twitter-consumer
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: twitter-consumer
+    spec:
+      containers:
+      - name: twitter-consumer
+        image: "registry.hub.docker.com/bbertka/twitter-consumer"
+        ports:
+        - containerPort: 8080
+        env:
+        - name: TASK_QUEUE
+          value: "rabbitmq"
+        - name: RABBITMQ_URI
+          value: "amqp://cgxsdju12p:GxGidawJswQ145Z_cSW98GBtvR94oj@toad.rmq.cloudamqp.com/cg34ducp"
+        - name: PORT
+          value: "8080"
