@@ -1,4 +1,4 @@
-# PCF RabbitMQ Twitter Demo
+<h1> VMware has ended active development of this project, this repository will no longer be updated.</h1><br># PCF RabbitMQ Twitter Demo
 
 This demo uses RabbitMQ to queue tweets streamed by the Producer, ready for processing by the Consumer. In this example, the processing is just a sleep function.
 
